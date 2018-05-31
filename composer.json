@@ -1,0 +1,25 @@
+{
+    "name": "kix/pf-test",
+    "description": "Test task for PropertyFinder",
+    "config": {
+        "platform": {
+            "php": "7.1"
+        }
+    },
+    "require": {
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^4.3"
+    },
+    "authors": [
+        {
+            "name": "Stepan Anchugov",
+            "email": "kixxx1@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "RouteFinder\\": "src"
+        }
+    }
+}

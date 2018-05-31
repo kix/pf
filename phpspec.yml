@@ -1,0 +1,4 @@
+suites:
+    main_suite:
+        namespace: RouteFinder
+        psr4_prefix: RouteFinder
