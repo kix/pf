@@ -12,10 +12,26 @@ use RouteFinder\Output\StringOutput;
 
 $route = new Route([
     new BoardingCard('Madrid', 'Barcelona', 'train', '78A', '45B'),
-    new BoardingCard('Barcelona', 'Gerona Airport', 'the airport bus'),
-    new BoardingCard('Gerona Airport', 'Stockholm', 'flight', 'SK455', '3A', '45B', 'Baggage drop at ticket counter 344'),
     new BoardingCard('Stockholm', 'New York JFK', 'flight', 'SK22', '7B', '22', 'Baggage will we automatically transferred from your last leg'),
+    new BoardingCard('Gerona Airport', 'Stockholm', 'flight', 'SK455', '3A', '45B', 'Baggage drop at ticket counter 344'),
+    new BoardingCard('Barcelona', 'Gerona Airport', 'the airport bus'),
 ]);
+
+$output = new StringOutput();
+echo $output->output($route);
+
+$route = new Route([
+    new BoardingCard('Madrid', 'Barcelona', 'train', '78A', '45B'),
+    new BoardingCard('Gerona Airport', 'Stockholm', 'flight', 'SK455', '3A', '45B', 'Baggage drop at ticket counter 344'),
+    new BoardingCard('Barcelona', 'Gerona Airport', 'the airport bus'),
+    new BoardingCard('Stockholm', 'New York JFK', 'flight', 'SK22', '7B', '22', 'Baggage will we automatically transferred from your last leg'),
+], new class implements \RouteFinder\SortingStrategy\StrategyInterface {
+    public function sort(array $cards): array
+    {
+        shuffle($cards);
+        return $cards;
+    }
+});
 
 $output = new StringOutput();
 echo $output->output($route);

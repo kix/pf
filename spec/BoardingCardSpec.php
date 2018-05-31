@@ -20,19 +20,6 @@ class BoardingCardSpec extends ObjectBehavior
         $this->shouldHaveType(BoardingCard::class);
     }
 
-    function it_is_initializable_from_array()
-    {
-        $this->beConstructedThrough('fromArray', [[
-            'from' => 'Madrid',
-            'to' => 'Barcelona',
-            'transportType' => 'train',
-            'transportId' => '78A',
-            'seat' => '45B',
-            'extraInfo' => 'Baggage drop at ticket counter 344',
-        ]]);
-        $this->shouldHaveType(BoardingCard::class);
-    }
-
     function it_returns_source()
     {
         $this->beConstructedWith(

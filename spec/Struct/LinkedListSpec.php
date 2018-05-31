@@ -97,4 +97,28 @@ class LinkedListSpec extends ObjectBehavior
         $this->beConstructedWith($array);
         $this->toArray()->shouldBeEqualTo(['Madrid → Barcelona','Barcelona → Gerona', 'Gerona → Stockholm', 'Stockholm → New York']);
     }
+
+    function it_throws_for_incomplete_graphs()
+    {
+        $array = [
+            [
+                'prev' => 'Madrid',
+                'next' => 'Barcelona',
+                'value' => 'Madrid → Barcelona',
+            ],
+            [
+                'prev' => 'Gerona Airport',
+                'next' => 'Stockholm',
+                'value' => 'Gerona → Stockholm',
+            ],
+            [
+                'prev' => 'Stockholm',
+                'next' => 'New York',
+                'value' => 'Stockholm → New York',
+            ],
+        ];
+
+        $this->beConstructedWith($array);
+        $this->shouldThrow(\LogicException::class)->duringInstantiation();
+    }
 }
