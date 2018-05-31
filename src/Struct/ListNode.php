@@ -89,13 +89,4 @@ class ListNode
     {
         return $this->previous;
     }
-
-    /**
-     * @param ListNode $previous
-     */
-    public function setPrevious(ListNode $previous): void
-    {
-        $this->previous = $previous;
-        $previous->next = $this;
-    }
 }

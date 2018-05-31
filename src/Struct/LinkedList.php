@@ -32,7 +32,7 @@ class LinkedList
                 if ($node2->getNextKey() == $node->getPrevKey()) {
                     $node2->setNext($node);
                 } elseif ($node2->getPrevKey() == $node->getNextKey()) {
-                    $node2->setPrevious($node);
+                    $node->setNext($node2);
                 }
             }
 
