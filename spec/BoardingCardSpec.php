@@ -30,6 +30,7 @@ class BoardingCardSpec extends ObjectBehavior
             'seat' => '45B',
             'extraInfo' => 'Baggage drop at ticket counter 344',
         ]]);
+        $this->shouldHaveType(BoardingCard::class);
     }
 
     function it_returns_source()
