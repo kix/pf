@@ -29,7 +29,8 @@ use RouteFinder\BoardingCard;
 $card = new BoardingCard('Gerona Airport', 'Stockholm', 'flight', 'SK455', '3A', '45B', 'Baggage drop at ticket counter 344');
 ```
 
-A collection of boarding cards makes a route:
+A collection of boarding cards makes a route. A route does not make sense if its legs are shuffled, thus the route is
+sorted upon instantiation, using `LinkedListStrategy` as the default.
 
 ```php
 use RouteFinder\BoardingCard;
@@ -55,7 +56,7 @@ $route = new Route([
 ], new class implements StrategyInterface {
     public function sort(array $cards): array 
     {
-        // ...
+        return $cards;
     }
 });
 ```
