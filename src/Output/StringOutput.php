@@ -11,18 +11,20 @@ class StringOutput implements OutputInterface
         'train' => 'Take {transportType} {transportId} from {source} to {destination}.',
         'the airport bus' => 'Take {transportType} from {source} to {destination}.',
         'flight' => 'From {source}, take {transportType} {transportId} to {destination}. Gate {gate}, seat {seat}.
-{extraInfo}.'
+{extraInfo}.',
     ];
 
     /**
      * @api
+     *
      * @param Route $route
+     *
      * @return mixed|string
      */
     public function output(Route $route)
     {
         $result = array_map([$this, 'outputCard'], $route->getRoute());
-        $result []= 'You have arrived at your final destination.';
+        $result[] = 'You have arrived at your final destination.';
 
         return implode("\n", $result);
     }
@@ -42,15 +44,15 @@ class StringOutput implements OutputInterface
 
         $note = self::renderTemplate($template, $card->toArray());
 
-        if ($seat = $card->getSeat() ) {
-            if (strpos($template, '{seat}') === false) {
+        if ($seat = $card->getSeat()) {
+            if (false === strpos($template, '{seat}')) {
                 $note .= sprintf(' Take seat %s.', $seat);
             }
         } else {
             $note .= ' No seat assignment.';
         }
 
-        $result []= $note;
+        $result[] = $note;
 
         return implode(' ', $result);
     }

@@ -14,9 +14,10 @@ class Route
 
     /**
      * Route constructor.
+     *
      * @api
      *
-     * @param BoardingCard[] $cards
+     * @param BoardingCard[]         $cards
      * @param StrategyInterface|null $strategy
      */
     public function __construct(array $cards, StrategyInterface $strategy = null)
@@ -45,6 +46,7 @@ class Route
 
     /**
      * @api
+     *
      * @return BoardingCard[]
      */
     public function getRoute(): array

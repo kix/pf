@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace RouteFinder\Struct;
@@ -32,6 +33,7 @@ class ListNode
 
     /**
      * ListNode constructor.
+     *
      * @param mixed $data
      */
     public function __construct($data, string $prevKey, string $nextKey)

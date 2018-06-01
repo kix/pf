@@ -20,7 +20,9 @@ class BoardingCard
 
     /**
      * BoardingCard constructor.
+     *
      * @api
+     *
      * @param $source
      * @param $destination
      * @param $transportType

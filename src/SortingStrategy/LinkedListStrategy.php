@@ -9,6 +9,7 @@ class LinkedListStrategy implements StrategyInterface
 {
     /**
      * @param BoardingCard[] $cards
+     *
      * @return array
      */
     public function sort(array $cards): array
@@ -16,7 +17,7 @@ class LinkedListStrategy implements StrategyInterface
         $items = [];
 
         foreach ($cards as $card) {
-            $items []= [
+            $items[] = [
                 'value' => $card,
                 'prev' => $card->getSource(),
                 'next' => $card->getDestination(),

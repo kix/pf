@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace RouteFinder\Struct;
@@ -14,6 +15,7 @@ class LinkedList
 
     /**
      * LinkedList constructor.
+     *
      * @param array $cards
      */
     public function __construct(array $cards)
@@ -38,7 +40,7 @@ class LinkedList
                 }
             }
 
-            if ($node->getPrevious() === null) {
+            if (null === $node->getPrevious()) {
                 $this->firstNode = $node;
             }
 
@@ -59,7 +61,7 @@ class LinkedList
 
         while ($nextNode = $currentNode->getNext()) {
             $currentNode = $nextNode;
-            $result []= $nextNode->getData();
+            $result[] = $nextNode->getData();
         }
 
         return $result;
