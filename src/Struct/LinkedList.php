@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace RouteFinder\Struct;
 
+use RouteFinder\Struct\Exception\MalformedRouteException;
+
 class LinkedList
 {
     /**
@@ -23,7 +25,7 @@ class LinkedList
             $sorted[] = new ListNode($card['value'], $card['prev'], $card['next']);
         }
 
-        foreach ($sorted as $j => $node) {
+        foreach ($sorted as $node) {
             foreach ($sorted as $k => $node2) {
                 if ($node2->getNext() && $node2->getPrevious()) {
                     unset($sorted[$k]);
@@ -41,8 +43,12 @@ class LinkedList
             }
 
             if (!$node->getNext() && !$node->getPrevious()) {
-                throw new \LogicException('Bad node: '.$node->getData());
+                throw MalformedRouteException::forNode($node);
             }
+        }
+
+        if (!$this->firstNode) {
+            throw MalformedRouteException::forCircularDependency();
         }
     }
 

@@ -5,6 +5,7 @@ namespace spec\RouteFinder\Struct;
 use RouteFinder\Struct\LinkedList;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use RouteFinder\Struct\Exception\MalformedRouteException;
 
 class LinkedListSpec extends ObjectBehavior
 {
@@ -108,7 +109,7 @@ class LinkedListSpec extends ObjectBehavior
             ],
             [
                 'prev' => 'Gerona Airport',
-                'next' => 'Stockholm',
+                'next' => 'Stockhold',
                 'value' => 'Gerona → Stockholm',
             ],
             [
@@ -120,5 +121,34 @@ class LinkedListSpec extends ObjectBehavior
 
         $this->beConstructedWith($array);
         $this->shouldThrow(\LogicException::class)->duringInstantiation();
+    }
+
+    function it_throws_for_circular_dependencies()
+    {
+        $array = [
+            [
+                'prev' => 'a',
+                'next' => 'b',
+                'value' => 1,
+            ],
+            [
+                'prev' => 'b',
+                'next' => 'c',
+                'value' => 2,
+            ],
+            [
+                'prev' => 'c',
+                'next' => 'd',
+                'value' => 3,
+            ],
+            [
+                'prev' => 'd',
+                'next' => 'a',
+                'value' => 4,
+            ]
+        ];
+
+        $this->beConstructedWith($array);
+        $this->shouldThrow(MalformedRouteException::class)->duringInstantiation();
     }
 }
