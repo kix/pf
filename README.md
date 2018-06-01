@@ -20,7 +20,7 @@ $ vendor/bin/phpspec run --format=pretty
 
 # Usage
 ## Logic
-Check out the example at `bin/example`. A boarding card is represented by an instance of `RouteFinder\BoardingCard`. 
+Check out the example at [`bin/example`](https://github.com/kix/pf/blob/master/bin/example). A boarding card is represented by an instance of [`RouteFinder\BoardingCard`](https://github.com/kix/pf/blob/master/src/BoardingCard.php#L24). 
 It accepts the departure and destination as arguments, as well as all the other data that the boarding card might have:
 
 ```php
@@ -87,7 +87,7 @@ class LinkedListStrategy implements StrategyInterface
 ```
 
 ## Output
-The output is handled by classes that implement `RouteFinder\Output\OutputInterface`. An example `StringOutput` handles
+The output is handled by classes that implement [`RouteFinder\Output\OutputInterface`](https://github.com/kix/pf/blob/master/src/Output/OutputInterface.php). An example [`StringOutput`]((https://github.com/kix/pf/blob/master/src/Output/StringOutput.php)) handles
 plain-text output that uses a basic string-based template engine. You can output a route like so:
 ```php
 use RouteFinder\BoardingCard;
@@ -106,10 +106,10 @@ echo (new StringOutput())->output($route));
 
 # Notes
 All of the endpoints for the API are annotated with `@api`. These include:
-- constructor for `BoardingCard`
-- constructor for `Route`
-- `Route#getRoute()`
-- `RouteFinder\Output\StringOutput`
+- constructor for [`BoardingCard`](https://github.com/kix/pf/blob/master/src/BoardingCard.php#L24)
+- constructor for [`Route`](https://github.com/kix/pf/blob/master/src/Route.php#L18)
+- [`Route#getRoute()`](https://github.com/kix/pf/blob/master/src/Route.php#L48)
+- [`RouteFinder\Output\StringOutput`](https://github.com/kix/pf/blob/master/src/Output/StringOutput.php)
 
 # Assumptions
 ```
@@ -123,11 +123,11 @@ Be prepared to suggest to us how we could extend the code towards new types of t
 characteristics.
 ```
 The main characteristic of a commute here is source and destination. Other characteristics could be either added as 
-fields to the `BoardingCard` class, or as value objects, although at this point I see no need for that. 
+fields to the [`BoardingCard`](https://github.com/kix/pf/blob/master/src/BoardingCard.php) class, or as value objects, although at this point I see no need for that. 
 Also, this might require adding a more sophisticated output logic, maybe a template engine that allows branching.
 
 ```
 The implementation of your sorting algorithm should work with any set of boarding passes, as long as there is always an 
 unbroken chain between all the legs of the trip. i.e. it's one continuous trip with no interruptions.
 ```
-An exception is thrown if a route cannot be linked together. Circular dependencies cause an exception too.
+[An exception is thrown](https://github.com/kix/pf/blob/master/spec/Struct/LinkedListSpec.php#L102) if a route cannot be linked together. Circular dependencies [cause an exception too](https://github.com/kix/pf/blob/master/spec/Struct/LinkedListSpec.php#L126).
