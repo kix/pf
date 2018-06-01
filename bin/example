@@ -10,15 +10,18 @@ use RouteFinder\Route;
 use RouteFinder\BoardingCard;
 use RouteFinder\Output\StringOutput;
 
+echo "== Normal sort: ==\n";
+
 $route = new Route([
     new BoardingCard('Madrid', 'Barcelona', 'train', '78A', '45B'),
-    new BoardingCard('Stockholm', 'New York JFK', 'flight', 'SK22', '7B', '22', 'Baggage will we automatically transferred from your last leg'),
-    new BoardingCard('Gerona Airport', 'Stockholm', 'flight', 'SK455', '3A', '45B', 'Baggage drop at ticket counter 344'),
     new BoardingCard('Barcelona', 'Gerona Airport', 'the airport bus'),
+    new BoardingCard('Gerona Airport', 'Stockholm', 'flight', 'SK455', '3A', '45B', 'Baggage drop at ticket counter 344'),
+    new BoardingCard('Stockholm', 'New York JFK', 'flight', 'SK22', '7B', '22', 'Baggage will we automatically transferred from your last leg'),
 ]);
 
-$output = new StringOutput();
-echo $output->output($route);
+echo (new StringOutput())->output($route);
+
+echo "\n\n== Shuffled cards (re-run to get a different result): ==\n";
 
 $route = new Route([
     new BoardingCard('Madrid', 'Barcelona', 'train', '78A', '45B'),
