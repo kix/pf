@@ -120,7 +120,7 @@ class LinkedListSpec extends ObjectBehavior
         ];
 
         $this->beConstructedWith($array);
-        $this->shouldThrow(\LogicException::class)->duringInstantiation();
+        $this->shouldThrow(MalformedRouteException::class)->duringInstantiation();
     }
 
     function it_throws_for_circular_dependencies()
