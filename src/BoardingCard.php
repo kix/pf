@@ -23,13 +23,13 @@ class BoardingCard
      *
      * @api
      *
-     * @param $source
-     * @param $destination
-     * @param $transportType
-     * @param $transportId
-     * @param $seat
-     * @param $gate
-     * @param $extraInfo
+     * @param string $source
+     * @param string $destination
+     * @param string $transportType
+     * @param string $transportId
+     * @param string $seat
+     * @param string $gate
+     * @param string $extraInfo
      */
     public function __construct(string $source, string $destination, string $transportType, string $transportId = null, string $seat = null, string $gate = null, string $extraInfo = null)
     {
